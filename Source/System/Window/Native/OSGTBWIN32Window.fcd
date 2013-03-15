@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<FieldContainer
+    name="TBWIN32Window"
+    parent="WindowEventProducer"
+    library="WindowWIN32"
+    pointerfieldtypes="both"
+    structure="concrete"
+    systemcomponent="true"
+    parentsystemcomponent="true"
+    docGroupBase="GrpWindowWIN32"
+    >
+    The class for TBWIN32 windows.
+    <Field
+        name="WIN32Window"
+        type="WIN32WindowPtr"
+        cardinality="single"
+        visibility="external"
+        defaultValue="NULL"
+		fieldHeader="OSGWIN32WindowFields.h"
+        access="public"
+        >
+    </Field>	
+</FieldContainer>

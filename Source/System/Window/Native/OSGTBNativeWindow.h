@@ -6,7 +6,7 @@
  *                                                                           *
  *                            www.opensg.org                                 *
  *                                                                           *
- *   Authors: David Kabala                                                   *
+ *   contact: dirk@opensg.org, gerrit.voss@vossg.org, jbehr@zgdv.de          *
  *                                                                           *
 \*---------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------*\
@@ -26,53 +26,35 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.                 *
  *                                                                           *
 \*---------------------------------------------------------------------------*/
-#include "OSGWindowUtils.h"
+/*---------------------------------------------------------------------------*\
+ *                                Changes                                    *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+\*---------------------------------------------------------------------------*/
 
-#ifdef __APPLE__
-#include "OSGCarbonWindow.h"
+#ifndef _OSGNATIVEWINDOW_H_
+#define _OSGNATIVEWINDOW_H_
+#ifdef __sgi
+#pragma once
 #endif
 
-#ifdef WIN32
-#include "OSGWIN32Window.h"
 #include "OSGTBWIN32Window.h"
-#endif
 
-#ifdef __linux
-#include "OSGXWindow.h"
-#endif
-
-#include "OSGTBNativeWindow.h"
+#ifndef OSG_DO_DOC
 
 OSG_BEGIN_NAMESPACE
 
-WindowEventProducerTransitPtr createNativeWindow(void)
-{
-#if defined(__APPLE__)
-    return WindowEventProducerTransitPtr(CarbonWindow::create());
-#elif defined(WIN32)
+/*! \ingroup GrpWindowWIN32Obj
+ */
 
-	TBWIN32WindowUnrecPtr win = TBWIN32Window::create();
-	WIN32WindowUnrecPtr nwin = WIN32Window::create();
-	win->setWIN32Window( nwin );
-
-	return WindowEventProducerTransitPtr( win );
-    //return WindowEventProducerTransitPtr(WIN32Window::create());
-#elif defined(__linux)
-    return WindowEventProducerTransitPtr(XWindow::create());
-#endif
-}
-
-FieldContainerType const *getNativeWindowType(void)
-{
-#if defined(__APPLE__)
-    return &CarbonWindow::getClassType();
-#elif defined(WIN32)
-    return &WIN32Window::getClassType();
-#elif defined(__linux)
-    return &XWindow::getClassType();
-#endif
-}
-
+typedef TBWIN32Window TBNativeWindow;
+OSG_GEN_CONTAINERPTR(TBNativeWindow) 
 OSG_END_NAMESPACE
 
+#endif
 
+#endif // _OSGNATIVEWINDOW_H_

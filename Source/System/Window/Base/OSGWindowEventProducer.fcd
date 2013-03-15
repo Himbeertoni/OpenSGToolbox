@@ -5,7 +5,7 @@
     parent="Window"
     library="System"
     pointerfieldtypes="both"
-    structure="abstract"
+    <!--structure="abstract"-->
     systemcomponent="true"
     parentsystemcomponent="true"
 >
