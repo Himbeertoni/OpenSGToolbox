@@ -47,13 +47,15 @@
 #include "OSGKeyEventDetails.h"
 #include "OSGWindowEventProducer.h"
 
+#define CPP11_OVERRIDE override
+
 OSG_BEGIN_NAMESPACE
 
 /*! \brief TBWIN32Window class. See \ref
            PageWindowWIN32TBWIN32Window for a description.
 */
 
-class OSG_WINDOWWIN32_DLLMAPPING TBWIN32Window : public TBWIN32WindowBase
+class OSG_WINDOW_DLLMAPPING TBWIN32Window : public TBWIN32WindowBase
 {
   protected:
 
@@ -85,111 +87,115 @@ class OSG_WINDOWWIN32_DLLMAPPING TBWIN32Window : public TBWIN32WindowBase
     static LRESULT CALLBACK staticWndProc(HWND hwnd, UINT uMsg,
                                           WPARAM wParam, LPARAM lParam);
 
+#if 0
     const HWND                &getHwnd            (void) const;
+#endif	
+	void assignHwnd(const HWND &value); 
 
 
-    virtual bool attachWindow(void);
-    virtual Window* initWindow(void);
-    virtual void mainLoop(void);
+    virtual bool attachWindow(void) CPP11_OVERRIDE;
+    virtual Window* initWindow(void) CPP11_OVERRIDE;
+    virtual void mainLoop(void) CPP11_OVERRIDE;
 
     //Set the Window Position
-    virtual void setPosition(Pnt2f Pos);
+    virtual void setPosition(Pnt2f Pos) CPP11_OVERRIDE;
 
     //Set the Window Position
-    virtual Pnt2f getPosition(void) const;
+    virtual Pnt2f getPosition(void) const CPP11_OVERRIDE;
 
     //Set the Window size
-    virtual void setSize(Vec2us Size);
+    virtual void setSize(Vec2us Size) CPP11_OVERRIDE;
 
     //Get the Window size
-    virtual Vec2f getSize(void) const;
+    virtual Vec2f getSize(void) const CPP11_OVERRIDE;
 
     //Focused
     //Set the Window Focus
-    virtual void setFocused(bool Focused);
+    virtual void setFocused(bool Focused) CPP11_OVERRIDE;
 
     //Get the Window Focus
-    virtual bool getFocused(void) const;
+    virtual bool getFocused(void) const CPP11_OVERRIDE;
 
     //Visible / Iconify / Normal
     //Set the Window Visible
-    virtual void setVisible(bool Visible);
+    virtual void setVisible(bool Visible) CPP11_OVERRIDE;
 
     //Get the Window Visible
-    virtual bool getVisible(void) const;
+    virtual bool getVisible(void) const CPP11_OVERRIDE;
 
     //Set the Window Iconify
-    virtual void setIconify(bool Iconify);
+    virtual void setIconify(bool Iconify) CPP11_OVERRIDE;
 
     //Get the Window Iconify
-    virtual bool getIconify(void) const;
+    virtual bool getIconify(void) const CPP11_OVERRIDE;
 
     //Fullscreen
-    virtual void setFullscreen(bool Fullscreen);
+    virtual void setFullscreen(bool Fullscreen) CPP11_OVERRIDE;
 
     //Set the text on the Title bar of the window
-    virtual void setTitle(const std::string& TitleText);
+    virtual void setTitle(const std::string& TitleText) CPP11_OVERRIDE;
 
     //Get the text of the Title bar of the window
-    virtual std::string getTitle(void);
+    virtual std::string getTitle(void) CPP11_OVERRIDE;
 
     //Set the window to allow or not allow Resizing
-    virtual void setRisizable(bool IsResizable);
+    virtual void setResizable(bool IsResizable) CPP11_OVERRIDE;
 
     //Get whether or not the window allows resizing
-    virtual bool getRisizable(void);
+    virtual bool getResizable(void) CPP11_OVERRIDE;
 
     //Set the window to draw or not draw it's border
-    virtual void setDrawBorder(bool DrawBorder);
+    virtual void setDrawBorder(bool DrawBorder) CPP11_OVERRIDE;
 
     //Get wether or not the window is drawing a border
-    virtual bool getDrawBorder(void);
+    virtual bool getDrawBorder(void) CPP11_OVERRIDE;
 
     //Get the Window Fullscreen
-    virtual bool getFullscreen(void) const;
+    virtual bool getFullscreen(void) const CPP11_OVERRIDE;
 
-    virtual void setShowCursor(bool showCursor);
+    virtual void setShowCursor(bool showCursor) CPP11_OVERRIDE;
 
-    virtual bool getShowCursor(void) const;
+    virtual bool getShowCursor(void) const CPP11_OVERRIDE;
 
-    virtual void setAttachMouseToCursor(bool attach);
+    virtual void setAttachMouseToCursor(bool attach) CPP11_OVERRIDE;
 
-    virtual bool getAttachMouseToCursor(void) const;
+    virtual bool getAttachMouseToCursor(void) const CPP11_OVERRIDE;
 
 
     virtual void setCursorPos(Vec2f Pos);
 
-    virtual UInt32 getKeyModifiers(void) const;
-    virtual KeyEventDetails::KeyState getKeyState(KeyEventDetails::Key TheKey) const;
-    virtual Pnt2f getMousePosition(void) const;
+    virtual UInt32 getKeyModifiers(void) const CPP11_OVERRIDE;
+    virtual KeyEventDetails::KeyState getKeyState(KeyEventDetails::Key TheKey) const CPP11_OVERRIDE;
+    virtual Pnt2f getMousePosition(void) const CPP11_OVERRIDE;
 
-    virtual std::string getClipboard(void) const;
+    virtual std::string getClipboard(void) const CPP11_OVERRIDE;
 
-    virtual void putClipboard(const std::string Value);
+    virtual void putClipboard(const std::string Value) CPP11_OVERRIDE;
 
     virtual void openWindow(const Pnt2f& ScreenPosition,
                             const Vec2f& Size,
-                            const std::string& WindowName);
+                            const std::string& WindowName) CPP11_OVERRIDE;
 
-    virtual void closeWindow(void);
+    virtual void closeWindow(void) CPP11_OVERRIDE;
 
-    virtual void draw(void);
-    virtual void update(void);
+    virtual void draw(void) CPP11_OVERRIDE;
+    virtual void update(void) CPP11_OVERRIDE;
 
-    virtual Vec2f getDesktopSize(void) const;
+    virtual Vec2f getDesktopSize(void) const CPP11_OVERRIDE;
 
     virtual std::vector<BoostPath> openFileDialog(const std::string& WindowTitle,
                                              const std::vector<OSG::WindowEventProducer::FileDialogFilter>& Filters,
                                              const BoostPath& InitialDir,
-                                             bool AllowMultiSelect);
+                                             bool AllowMultiSelect) CPP11_OVERRIDE;
 
     virtual BoostPath saveFileDialog(const std::string& DialogTitle,
                                 const std::vector<OSG::WindowEventProducer::FileDialogFilter>& Filters,
                                 const std::string& InitialFile,
                                 const BoostPath& InitialDirectory,
                                 bool PromptForOverwrite
-                               );
-	
+                               ) CPP11_OVERRIDE;
+
+
     /*=========================  PROTECTED  ===============================*/
 
   protected:
@@ -229,10 +235,17 @@ class OSG_WINDOWWIN32_DLLMAPPING TBWIN32Window : public TBWIN32WindowBase
     /*! \name                MT Construction                               */
     /*! \{                                                                 */
 
-           void onCreate       (const TBWIN32Window *source = NULL);
+    void onCreate       (const TBWIN32Window *source = NULL);
 
-           void onDestroy      (      UInt32  uiContainerId);
+    void onDestroy      (      UInt32  uiContainerId);
 
+	virtual void init(GLInitFunctor oFunc = GLInitFunctor());
+	virtual void terminate   (void) CPP11_OVERRIDE;	
+    virtual void doActivate  (void) CPP11_OVERRIDE;
+    virtual void doDeactivate(void) CPP11_OVERRIDE;
+    virtual bool doSwap      (void) CPP11_OVERRIDE;
+
+    virtual bool hasContext  (void) CPP11_OVERRIDE;
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
     /*! \name      Window system implementation functions                  */

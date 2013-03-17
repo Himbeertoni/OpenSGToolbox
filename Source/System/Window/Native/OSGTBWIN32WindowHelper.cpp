@@ -45,13 +45,13 @@
 
 #include "OSGConfig.h"
 
-#include "OSGTBWindow.h"
+#include "OSGTBWIN32WindowHelper.h"
 
 OSG_BEGIN_NAMESPACE
 
 // Documentation for this class is emitted in the
-// OSGTBWindowBase.cpp file.
-// To modify it, please change the .fcd file (OSGTBWindow.fcd) and
+// OSGTBWIN32WindowHelperBase.cpp file.
+// To modify it, please change the .fcd file (OSGTBWIN32WindowHelper.fcd) and
 // regenerate the base file.
 
 /***************************************************************************\
@@ -62,7 +62,7 @@ OSG_BEGIN_NAMESPACE
  *                           Class methods                                 *
 \***************************************************************************/
 
-void TBWindow::initMethod(InitPhase ePhase)
+void TBWIN32WindowHelper::initMethod(InitPhase ePhase)
 {
     Inherited::initMethod(ePhase);
 
@@ -75,237 +75,70 @@ void TBWindow::initMethod(InitPhase ePhase)
 /***************************************************************************\
  *                           Instance methods                              *
 \***************************************************************************/
-#if 0
-void TBWindow::openWindow(const Pnt2f& screenPosition,
-                       const Vec2f& size,
-                       const std::string& windowName)
+void TBWIN32WindowHelper::terminate(void)
 {
-    //getWindow()->openWindow( screenPosition, size, windowName );
+	Inherited::terminate();
 }
 
-
-void TBWindow::closeWindow(void)
+void TBWIN32WindowHelper::doActivate  (void)
 {
-    //getWindow()->closeWindow();
-}
-    
-void TBWindow::mainLoop(void)
-{
-    //getWindow()->mainLoop();
+	Inherited::doActivate();
 }
 
-void TBWindow::setPosition(Pnt2f pos)
+void TBWIN32WindowHelper::doDeactivate(void)
 {
-    //getWindow()->setPosition( pos );
+	Inherited::doDeactivate();
 }
 
-Pnt2f TBWindow::getPosition(void) const
+bool TBWIN32WindowHelper::doSwap      (void)
 {
-    return Pnt2f();//getWindow()->getPosition();
+	return Inherited::doSwap();
 }
 
-void TBWindow::setSize(Vec2us size)
+bool TBWIN32WindowHelper::hasContext  (void)
 {
-    //getWindow()->setSize( size );
+	return Inherited::hasContext();
 }
 
-void TBWindow::setSize(UInt16 width, UInt16 height)
+void TBWIN32WindowHelper::onDestroy     (      UInt32          uiContainerId     )
 {
-	//getWindow()->setSize( width, height );
+	Inherited::onDestroy( uiContainerId );
+	printf( "TBWIN32WindowHelper::onDestroy\n");
 }
 
-Vec2f TBWindow::getSize(void) const
-{
-    return Vec2f();//getWindow()->getSize();
-}
-
-void TBWindow::setFocused(bool focused)
-{
-    //getWindow()->setFocused( focused );
-}
-
-bool TBWindow::getFocused(void) const
-{
-	return false;//getWindow()->getFocused();
-}
-
-void TBWindow::setVisible(bool visible)
-{
-	//getWindow()->setVisible( visible );
-}
-
-bool TBWindow::getVisible(void) const
-{
-	return false;//getWindow()->getVisible();
-}
-
-void TBWindow::setIconify(bool iconify)
-{
-	//getWindow()->setIconify( iconify );
-}
-
-bool TBWindow::getIconify(void) const
-{
-	return false;//getWindow()->getIconify();
-}
-
-void TBWindow::setFullscreen(bool fullscreen)
-{
-	//getWindow()->setFullscreen( fullscreen );
-}
-
-bool TBWindow::getFullscreen(void) const
-{
-    return false;//getWindow()->getFullscreen();
-}
-
-void TBWindow::setTitle(const std::string& titleText)
-{
-	//getWindow()->setTitle( titleText );
-}
-
-std::string TBWindow::getTitle(void)
-{
-    return std::string();//getWindow()->getTitle();
-}
-
-void TBWindow::setResizable(bool isResizable)
-{
-	//getWindow()->setResizable( isResizable );
-}
-
-bool TBWindow::getResizable(void)
-{
-	return false;//getWindow()->getResizable();
-}
-
-void TBWindow::setDrawBorder(bool drawBorder)
-{
-    //getWindow()->setDrawBorder( drawBorder );
-}
-
-bool TBWindow::getDrawBorder(void)
-{
-	return false;//getWindow()->getDrawBorder();
-}
-
-void TBWindow::setShowCursor(bool showCursor)
-{
-	//getWindow()->setShowCursor( showCursor );
-}
-
-bool TBWindow::getShowCursor(void) const
-{
-	return false;//getWindow()->getShowCursor();
-}
-    
-void TBWindow::setAttachMouseToCursor(bool attach)
-{
-	//getWindow()->setAttachMouseToCursor( attach );
-}
-    
-bool TBWindow::getAttachMouseToCursor(void) const
-{
-	return false;//getWindow()->getAttachMouseToCursor();
-}
-
-Vec2f TBWindow::getDesktopSize(void) const
-{
-	return Vec2f();//getWindow()->getDesktopSize();
-}
-
-std::vector<BoostPath> TBWindow::openFileDialog(const std::string& windowTitle,
-        const std::vector<OSG::WindowEventProducer::FileDialogFilter>& filters,
-        const BoostPath& initialDir,
-        bool allowMultiSelect)
-{
-	return std::vector<BoostPath>();//getWindow()->openFileDialog( windowTitle, filters, initialDir, allowMultiSelect );
-}
-
-BoostPath TBWindow::saveFileDialog(const std::string& dialogTitle,
-                    const std::vector<OSG::WindowEventProducer::FileDialogFilter>& filters,
-                    const std::string& initialFile,
-                    const BoostPath& initialDirectory,
-                    bool promptForOverwrite
-                    )
-{
-	return BoostPath();//getWindow()->saveFileDialog( dialogTitle, filters, initialFile, initialDirectory, promptForOverwrite );
-}
-
-
-void TBWindow::draw(void)
-{
-	//getWindow()->draw();
-}
-
-void TBWindow::update(void)
-{
-	//getWindow()->update();
-}
-
-bool TBWindow::attachWindow(void)
-{
-	return false;//getWindow()->attachWindow();
-}
-
-UInt32 TBWindow::getKeyModifiers(void) const
-{
-	return 0u;//getWindow()->getKeyModifiers();
-}
-
-KeyEventDetails::KeyState TBWindow::getKeyState(KeyEventDetails::Key theKey) const
-{
-	return KeyEventDetails::KeyState();//getWindow()->getKeyState( theKey );
-}
-    
-Pnt2f TBWindow::getMousePosition(void) const
-{
-	return Pnt2f();//getWindow()->getMousePosition();
-}
-
-std::string TBWindow::getClipboard(void) const
-{
-	return std::string();//getWindow()->getClipboard();
-}
-
-void TBWindow::putClipboard(const std::string& value)
-{
-	//getWindow()->putClipboard( value );
-}
-#endif
 /*-------------------------------------------------------------------------*\
  -  private                                                                 -
 \*-------------------------------------------------------------------------*/
 
 /*----------------------- constructors & destructors ----------------------*/
 
-TBWindow::TBWindow(void) :
+TBWIN32WindowHelper::TBWIN32WindowHelper(void) :
     Inherited()
 {
 }
 
-TBWindow::TBWindow(const TBWindow &source) :
+TBWIN32WindowHelper::TBWIN32WindowHelper(const TBWIN32WindowHelper &source) :
     Inherited(source)
 {
 }
 
-TBWindow::~TBWindow(void)
+TBWIN32WindowHelper::~TBWIN32WindowHelper(void)
 {
 }
 
 /*----------------------------- class specific ----------------------------*/
 
-void TBWindow::changed(ConstFieldMaskArg whichField, 
+void TBWIN32WindowHelper::changed(ConstFieldMaskArg whichField, 
                             UInt32            origin,
                             BitVector         details)
 {
     Inherited::changed(whichField, origin, details);
 }
 
-void TBWindow::dump(      UInt32    ,
+void TBWIN32WindowHelper::dump(      UInt32    ,
                          const BitVector ) const
 {
-    SLOG << "Dump TBWindow NI" << std::endl;
+    SLOG << "Dump TBWIN32WindowHelper NI" << std::endl;
 }
 
 OSG_END_NAMESPACE

@@ -45,10 +45,10 @@
 
 #include "OSGConfig.h"
 
-#include "OSGWIN32Window.h"
-#include "OSGTBWIN32Window.h"
 
+#include "OSGTBWIN32Window.h"
 #include "OSGWindowEventProducer.h"
+#include "OSGTBWIN32WindowHelper.h"
 
 #include "Windowsx.h"
 #include <boost/algorithm/string.hpp>
@@ -80,10 +80,16 @@ void TBWIN32Window::initMethod(InitPhase ePhase)
     {
     }
 }
-
+#if 0
 const HWND& TBWIN32Window::getHwnd() const
 {
-	return getWIN32Window()->getHwnd();
+	return Inherited::getHwnd();
+}
+#endif
+void TBWIN32Window::assignHwnd( const HWND& value )
+{
+	Inherited::setHwnd( value );
+	getActualWindow()->setHwnd( value );
 }
 
 LRESULT TBWIN32Window::staticWndProc(HWND hwnd, UINT uMsg,
@@ -1268,7 +1274,7 @@ void TBWIN32Window::update(void)
 
 Window* TBWIN32Window::initWindow(void)
 {
-	WindowRefPtr MyWindow = initWindow();
+	WindowRefPtr MyWindow = Inherited::initWindow();
     //Create the Win32 Window
     WNDCLASSEX  wndClass;
     
@@ -1375,7 +1381,7 @@ Window* TBWIN32Window::initWindow(void)
     }
 
     //Attach Window
-    setHwnd(hwnd);
+    assignHwnd(hwnd);
 
     _IsFullscreen = fullscreen;
 
@@ -1776,12 +1782,12 @@ std::string TBWIN32Window::getTitle(void)
     return std::string(Text);
 }
 
-void TBWIN32Window::setRisizable(bool IsResizable)
+void TBWIN32Window::setResizable(bool IsResizable)
 {
     //TODO:Implement
 }
 
-bool TBWIN32Window::getRisizable(void)
+bool TBWIN32Window::getResizable(void)
 {
     //TODO:Implement
     return true;
@@ -1821,9 +1827,11 @@ void TBWIN32Window::onDestroy(UInt32 uiContainerId)
 
     Inherited::onDestroy(uiContainerId);
 
-    if(IsWindow(getHwnd()))
+	auto val = getHwnd();
+
+    if(::IsWindow( val ))
     {
-        DestroyWindow(getHwnd());
+        ::DestroyWindow(getHwnd());
         produceWindowClosed();
         //PostQuitMessage(0);
     }
@@ -1856,6 +1864,37 @@ TBWIN32Window::TBWIN32Window(const TBWIN32Window &source) :
 
 TBWIN32Window::~TBWIN32Window(void)
 {
+}
+
+void TBWIN32Window::init(GLInitFunctor oFunc)
+{
+	getActualWindow()->init( oFunc );
+}
+
+void TBWIN32Window::terminate()
+{
+	getActualWindow()->terminate();
+}
+
+
+void TBWIN32Window::doActivate  (void)
+{
+	getActualWindow()->doActivate();
+}
+
+void TBWIN32Window::doDeactivate(void)
+{
+	getActualWindow()->doDeactivate();
+}
+
+bool TBWIN32Window::doSwap      (void)
+{
+	return getActualWindow()->doSwap();
+}
+
+bool TBWIN32Window::hasContext  (void)
+{
+	return getActualWindow()->hasContext();
 }
 
 /*----------------------------- class specific ----------------------------*/

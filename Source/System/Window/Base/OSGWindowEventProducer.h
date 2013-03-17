@@ -195,10 +195,10 @@ class OSG_SYSTEM_DLLMAPPING WindowEventProducer : public WindowEventProducerBase
     virtual std::string getTitle(void) = 0;
 
     //Set the window to allow or not allow Resizing
-    virtual void setRisizable(bool IsResizable) = 0;
+    virtual void setResizable(bool IsResizable) = 0;
 
     //Get whether or not the window allows resizing
-    virtual bool getRisizable(void) = 0;
+    virtual bool getResizable(void) = 0;
 
     //Set the window to draw or not draw it's border
     virtual void setDrawBorder(bool DrawBorder) = 0;

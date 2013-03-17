@@ -45,14 +45,14 @@
  **           regenerated, which can become necessary at any time.          **
  **                                                                         **
  **     Do not change this file, changes should be done in the derived      **
- **     class TBWIN32Window
+ **     class TBWIN32WindowHelper
  **                                                                         **
  *****************************************************************************
 \*****************************************************************************/
 
 
-#ifndef _OSGTBWIN32WINDOWBASE_H_
-#define _OSGTBWIN32WINDOWBASE_H_
+#ifndef _OSGTBWIN32WINDOWHELPERBASE_H_
+#define _OSGTBWIN32WINDOWHELPERBASE_H_
 #ifdef __sgi
 #pragma once
 #endif
@@ -63,52 +63,34 @@
 
 //#include "OSGBaseTypes.h"
 
-#include "OSGWindowEventProducer.h" // Parent
+#include "OSGWIN32Window.h" // Parent
 
-#include "OSGTBWIN32WindowHelperFields.h" // ActualWindow type
-#include "OSGWIN32WindowDataFields.h"   // Hwnd type
 
-#include "OSGTBWIN32WindowFields.h"
+#include "OSGTBWIN32WindowHelperFields.h"
 
 OSG_BEGIN_NAMESPACE
 
 
-class TBWIN32Window;
+class TBWIN32WindowHelper;
 
-//! \brief TBWIN32Window Base Class.
+//! \brief TBWIN32WindowHelper Base Class.
 
-class OSG_WINDOW_DLLMAPPING TBWIN32WindowBase : public WindowEventProducer
+class OSG_WINDOW_DLLMAPPING TBWIN32WindowHelperBase : public WIN32Window
 {
   public:
 
-    typedef WindowEventProducer Inherited;
-    typedef WindowEventProducer ParentContainer;
+    typedef WIN32Window Inherited;
+    typedef WIN32Window ParentContainer;
 
     typedef Inherited::TypeObject TypeObject;
     typedef TypeObject::InitPhase InitPhase;
 
-    OSG_GEN_INTERNALPTR(TBWIN32Window);
+    OSG_GEN_INTERNALPTR(TBWIN32WindowHelper);
 
     /*==========================  PUBLIC  =================================*/
 
   public:
 
-    enum
-    {
-        ActualWindowFieldId = Inherited::NextFieldId,
-        HwndFieldId = ActualWindowFieldId + 1,
-        NextFieldId = HwndFieldId + 1
-    };
-
-    static const OSG::BitVector ActualWindowFieldMask =
-        (TypeTraits<BitVector>::One << ActualWindowFieldId);
-    static const OSG::BitVector HwndFieldMask =
-        (TypeTraits<BitVector>::One << HwndFieldId);
-    static const OSG::BitVector NextFieldMask =
-        (TypeTraits<BitVector>::One << NextFieldId);
-        
-    typedef SFUnrecTBWIN32WindowHelperPtr SFActualWindowType;
-    typedef SFHWND            SFHwndType;
 
     /*---------------------------------------------------------------------*/
     /*! \name                    Class Get                                 */
@@ -130,41 +112,6 @@ class OSG_WINDOW_DLLMAPPING TBWIN32WindowBase : public WindowEventProducer
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
-    /*! \name                    Field Get                                 */
-    /*! \{                                                                 */
-
-            const SFUnrecTBWIN32WindowHelperPtr *getSFActualWindow   (void) const;
-                  SFUnrecTBWIN32WindowHelperPtr *editSFActualWindow   (void);
-
-                  SFHWND              *editSFHwnd           (void);
-            const SFHWND              *getSFHwnd            (void) const;
-
-
-                  TBWIN32WindowHelper * getActualWindow   (void) const;
-
-                  HWND                &editHwnd           (void);
-            const HWND                &getHwnd            (void) const;
-
-    /*! \}                                                                 */
-    /*---------------------------------------------------------------------*/
-    /*! \name                    Field Set                                 */
-    /*! \{                                                                 */
-
-            void setActualWindow   (TBWIN32WindowHelper * const value);
-            void setHwnd           (const HWND &value);
-
-    /*! \}                                                                 */
-    /*---------------------------------------------------------------------*/
-    /*! \name                Ptr Field Set                                 */
-    /*! \{                                                                 */
-
-    /*! \}                                                                 */
-    /*---------------------------------------------------------------------*/
-    /*! \name                Ptr MField Set                                */
-    /*! \{                                                                 */
-
-    /*! \}                                                                 */
-    /*---------------------------------------------------------------------*/
     /*! \name                   Binary Access                              */
     /*! \{                                                                 */
 
@@ -180,16 +127,16 @@ class OSG_WINDOW_DLLMAPPING TBWIN32WindowBase : public WindowEventProducer
     /*! \name                   Construction                               */
     /*! \{                                                                 */
 
-    static  TBWIN32WindowTransitPtr  create          (void);
-    static  TBWIN32Window           *createEmpty     (void);
+    static  TBWIN32WindowHelperTransitPtr  create          (void);
+    static  TBWIN32WindowHelper           *createEmpty     (void);
 
-    static  TBWIN32WindowTransitPtr  createLocal     (
+    static  TBWIN32WindowHelperTransitPtr  createLocal     (
                                                BitVector bFlags = FCLocal::All);
 
-    static  TBWIN32Window            *createEmptyLocal(
+    static  TBWIN32WindowHelper            *createEmptyLocal(
                                               BitVector bFlags = FCLocal::All);
 
-    static  TBWIN32WindowTransitPtr  createDependent  (BitVector bFlags);
+    static  TBWIN32WindowHelperTransitPtr  createDependent  (BitVector bFlags);
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
@@ -213,43 +160,30 @@ class OSG_WINDOW_DLLMAPPING TBWIN32WindowBase : public WindowEventProducer
     static const Char8 *getClassname     (void             );
 
     /*---------------------------------------------------------------------*/
-    /*! \name                      Fields                                  */
-    /*! \{                                                                 */
-
-    SFUnrecTBWIN32WindowHelperPtr _sfActualWindow;
-    SFHWND            _sfHwnd;
-
-    /*! \}                                                                 */
-    /*---------------------------------------------------------------------*/
     /*! \name                   Constructors                               */
     /*! \{                                                                 */
 
-    TBWIN32WindowBase(void);
-    TBWIN32WindowBase(const TBWIN32WindowBase &source);
+    TBWIN32WindowHelperBase(void);
+    TBWIN32WindowHelperBase(const TBWIN32WindowHelperBase &source);
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
     /*! \name                   Destructors                                */
     /*! \{                                                                 */
 
-    virtual ~TBWIN32WindowBase(void);
+    virtual ~TBWIN32WindowHelperBase(void);
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
     /*! \name                     onCreate                                */
     /*! \{                                                                 */
 
-    void onCreate(const TBWIN32Window *source = NULL);
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
     /*! \name                    Generic Field Access                      */
     /*! \{                                                                 */
 
-    GetFieldHandlePtr  getHandleActualWindow    (void) const;
-    EditFieldHandlePtr editHandleActualWindow   (void);
-    GetFieldHandlePtr  getHandleHwnd            (void) const;
-    EditFieldHandlePtr editHandleHwnd           (void);
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
@@ -263,7 +197,7 @@ class OSG_WINDOW_DLLMAPPING TBWIN32WindowBase : public WindowEventProducer
                                  ConstFieldMaskArg  syncMode  ,
                            const UInt32             uiSyncInfo);
 
-            void execSync (      TBWIN32WindowBase *pFrom,
+            void execSync (      TBWIN32WindowHelperBase *pFrom,
                                  ConstFieldMaskArg  whichField,
                                  AspectOffsetStore &oOffsets,
                                  ConstFieldMaskArg  syncMode  ,
@@ -303,11 +237,11 @@ class OSG_WINDOW_DLLMAPPING TBWIN32WindowBase : public WindowEventProducer
     /*---------------------------------------------------------------------*/
 
     // prohibit default functions (move to 'public' if you need one)
-    void operator =(const TBWIN32WindowBase &source);
+    void operator =(const TBWIN32WindowHelperBase &source);
 };
 
-typedef TBWIN32WindowBase *TBWIN32WindowBaseP;
+typedef TBWIN32WindowHelperBase *TBWIN32WindowHelperBaseP;
 
 OSG_END_NAMESPACE
 
-#endif /* _OSGTBWIN32WINDOWBASE_H_ */
+#endif /* _OSGTBWIN32WINDOWHELPERBASE_H_ */

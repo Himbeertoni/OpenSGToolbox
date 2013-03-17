@@ -48,8 +48,8 @@
 \*****************************************************************************/
 
 
-#ifndef _OSGTBWIN32WINDOWFIELDS_H_
-#define _OSGTBWIN32WINDOWFIELDS_H_
+#ifndef _OSGTBWIN32WINDOWHELPERFIELDS_H_
+#define _OSGTBWIN32WINDOWHELPERFIELDS_H_
 #ifdef __sgi
 #pragma once
 #endif
@@ -65,15 +65,15 @@
 OSG_BEGIN_NAMESPACE
 
 
-class TBWIN32Window;
+class TBWIN32WindowHelper;
 
-OSG_GEN_CONTAINERPTR(TBWIN32Window);
+OSG_GEN_CONTAINERPTR(TBWIN32WindowHelper);
 /*! \ingroup GrpWindowWIN32FieldTraits
     \ingroup GrpLibOSGWindow
  */
 template <>
-struct FieldTraits<TBWIN32Window *, nsOSG> :
-    public FieldTraitsFCPtrBase<TBWIN32Window *, nsOSG>
+struct FieldTraits<TBWIN32WindowHelper *, nsOSG> :
+    public FieldTraitsFCPtrBase<TBWIN32WindowHelper *, nsOSG>
 {
   private:
 
@@ -81,7 +81,7 @@ struct FieldTraits<TBWIN32Window *, nsOSG> :
 
   public:
 
-    typedef FieldTraits<TBWIN32Window *, nsOSG>  Self;
+    typedef FieldTraits<TBWIN32WindowHelper *, nsOSG>  Self;
 
     enum                        { Convertible = NotConvertible };
 
@@ -96,81 +96,81 @@ struct FieldTraits<TBWIN32Window *, nsOSG> :
 };
 
 template<> inline
-const Char8 *FieldTraits<TBWIN32Window *, nsOSG>::getSName<RecordedRefCountPolicy>(void)
+const Char8 *FieldTraits<TBWIN32WindowHelper *, nsOSG>::getSName<RecordedRefCountPolicy>(void)
 {
-    return "SFRecTBWIN32WindowPtr"; 
+    return "SFRecTBWIN32WindowHelperPtr"; 
 }
 
 template<> inline
-const Char8 *FieldTraits<TBWIN32Window *, nsOSG>::getSName<UnrecordedRefCountPolicy>(void)
+const Char8 *FieldTraits<TBWIN32WindowHelper *, nsOSG>::getSName<UnrecordedRefCountPolicy>(void)
 {
-    return "SFUnrecTBWIN32WindowPtr"; 
+    return "SFUnrecTBWIN32WindowHelperPtr"; 
 }
 
 template<> inline
-const Char8 *FieldTraits<TBWIN32Window *, nsOSG>::getSName<WeakRefCountPolicy>(void)
+const Char8 *FieldTraits<TBWIN32WindowHelper *, nsOSG>::getSName<WeakRefCountPolicy>(void)
 {
-    return "SFWeakTBWIN32WindowPtr"; 
+    return "SFWeakTBWIN32WindowHelperPtr"; 
 }
 
 template<> inline
-const Char8 *FieldTraits<TBWIN32Window *, nsOSG>::getSName<NoRefCountPolicy>(void)
+const Char8 *FieldTraits<TBWIN32WindowHelper *, nsOSG>::getSName<NoRefCountPolicy>(void)
 {
-    return "SFUnrefdTBWIN32WindowPtr"; 
+    return "SFUnrefdTBWIN32WindowHelperPtr"; 
 }
 
 template<> inline
-const Char8 *FieldTraits<TBWIN32Window *, nsOSG>::getMName<RecordedRefCountPolicy>(void)
+const Char8 *FieldTraits<TBWIN32WindowHelper *, nsOSG>::getMName<RecordedRefCountPolicy>(void)
 {
-    return "MFRecTBWIN32WindowPtr"; 
+    return "MFRecTBWIN32WindowHelperPtr"; 
 }
 
 template<> inline
-const Char8 *FieldTraits<TBWIN32Window *, nsOSG>::getMName<UnrecordedRefCountPolicy>(void)
+const Char8 *FieldTraits<TBWIN32WindowHelper *, nsOSG>::getMName<UnrecordedRefCountPolicy>(void)
 {
-    return "MFUnrecTBWIN32WindowPtr"; 
+    return "MFUnrecTBWIN32WindowHelperPtr"; 
 }
 
 template<> inline
-const Char8 *FieldTraits<TBWIN32Window *, nsOSG>::getMName<WeakRefCountPolicy>(void)
+const Char8 *FieldTraits<TBWIN32WindowHelper *, nsOSG>::getMName<WeakRefCountPolicy>(void)
 {
-    return "MFWeakTBWIN32WindowPtr"; 
+    return "MFWeakTBWIN32WindowHelperPtr"; 
 }
 
 template<> inline
-const Char8 *FieldTraits<TBWIN32Window *, nsOSG>::getMName<NoRefCountPolicy>(void)
+const Char8 *FieldTraits<TBWIN32WindowHelper *, nsOSG>::getMName<NoRefCountPolicy>(void)
 {
-    return "MFUnrefdTBWIN32WindowPtr"; 
+    return "MFUnrefdTBWIN32WindowHelperPtr"; 
 }
 
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 /*! \ingroup GrpWindowWIN32FieldSFields */
-typedef PointerSField<TBWIN32Window *,
-                      RecordedRefCountPolicy, nsOSG  > SFRecTBWIN32WindowPtr;
+typedef PointerSField<TBWIN32WindowHelper *,
+                      RecordedRefCountPolicy, nsOSG  > SFRecTBWIN32WindowHelperPtr;
 /*! \ingroup GrpWindowWIN32FieldSFields */
-typedef PointerSField<TBWIN32Window *,
-                      UnrecordedRefCountPolicy, nsOSG> SFUnrecTBWIN32WindowPtr;
+typedef PointerSField<TBWIN32WindowHelper *,
+                      UnrecordedRefCountPolicy, nsOSG> SFUnrecTBWIN32WindowHelperPtr;
 /*! \ingroup GrpWindowWIN32FieldSFields */
-typedef PointerSField<TBWIN32Window *,
-                      WeakRefCountPolicy, nsOSG      > SFWeakTBWIN32WindowPtr;
+typedef PointerSField<TBWIN32WindowHelper *,
+                      WeakRefCountPolicy, nsOSG      > SFWeakTBWIN32WindowHelperPtr;
 /*! \ingroup GrpWindowWIN32FieldSFields */
-typedef PointerSField<TBWIN32Window *,
-                      NoRefCountPolicy, nsOSG        > SFUncountedTBWIN32WindowPtr;
+typedef PointerSField<TBWIN32WindowHelper *,
+                      NoRefCountPolicy, nsOSG        > SFUncountedTBWIN32WindowHelperPtr;
 
 
 /*! \ingroup GrpWindowWIN32FieldMFields */
-typedef PointerMField<TBWIN32Window *,
-                      RecordedRefCountPolicy, nsOSG  > MFRecTBWIN32WindowPtr;
+typedef PointerMField<TBWIN32WindowHelper *,
+                      RecordedRefCountPolicy, nsOSG  > MFRecTBWIN32WindowHelperPtr;
 /*! \ingroup GrpWindowWIN32FieldMFields */
-typedef PointerMField<TBWIN32Window *,
-                      UnrecordedRefCountPolicy, nsOSG> MFUnrecTBWIN32WindowPtr;
+typedef PointerMField<TBWIN32WindowHelper *,
+                      UnrecordedRefCountPolicy, nsOSG> MFUnrecTBWIN32WindowHelperPtr;
 /*! \ingroup GrpWindowWIN32FieldMFields */
-typedef PointerMField<TBWIN32Window *,
-                      WeakRefCountPolicy, nsOSG      > MFWeakTBWIN32WindowPtr;
+typedef PointerMField<TBWIN32WindowHelper *,
+                      WeakRefCountPolicy, nsOSG      > MFWeakTBWIN32WindowHelperPtr;
 /*! \ingroup GrpWindowWIN32FieldMFields */
-typedef PointerMField<TBWIN32Window *,
-                      NoRefCountPolicy, nsOSG        > MFUncountedTBWIN32WindowPtr;
+typedef PointerMField<TBWIN32WindowHelper *,
+                      NoRefCountPolicy, nsOSG        > MFUncountedTBWIN32WindowHelperPtr;
 
 
 
@@ -178,38 +178,38 @@ typedef PointerMField<TBWIN32Window *,
 #else // these are the doxygen hacks
 
 /*! \ingroup GrpWindowWIN32FieldSFields \ingroup GrpLibOSGWindow */
-struct SFRecTBWIN32WindowPtr : 
-    public PointerSField<TBWIN32Window *,
+struct SFRecTBWIN32WindowHelperPtr : 
+    public PointerSField<TBWIN32WindowHelper *,
                          RecordedRefCountPolicy> {};
 /*! \ingroup GrpWindowWIN32FieldSFields \ingroup GrpLibOSGWindow */
-struct SFUnrecTBWIN32WindowPtr : 
-    public PointerSField<TBWIN32Window *,
+struct SFUnrecTBWIN32WindowHelperPtr : 
+    public PointerSField<TBWIN32WindowHelper *,
                          UnrecordedRefCountPolicy> {};
 /*! \ingroup GrpWindowWIN32FieldSFields \ingroup GrpLibOSGWindow */
-struct SFWeakTBWIN32WindowPtr :
-    public PointerSField<TBWIN32Window *,
+struct SFWeakTBWIN32WindowHelperPtr :
+    public PointerSField<TBWIN32WindowHelper *,
                          WeakRefCountPolicy> {};
 /*! \ingroup GrpWindowWIN32FieldSFields \ingroup GrpLibOSGWindow */
-struct SFUncountedTBWIN32WindowPtr :
-    public PointerSField<TBWIN32Window *,
+struct SFUncountedTBWIN32WindowHelperPtr :
+    public PointerSField<TBWIN32WindowHelper *,
                          NoRefCountPolicy> {};
 
 
 /*! \ingroup GrpWindowWIN32FieldMFields \ingroup GrpLibOSGWindow */
-struct MFRecTBWIN32WindowPtr :
-    public PointerMField<TBWIN32Window *,
+struct MFRecTBWIN32WindowHelperPtr :
+    public PointerMField<TBWIN32WindowHelper *,
                          RecordedRefCountPolicy  > {};
 /*! \ingroup GrpWindowWIN32FieldMFields \ingroup GrpLibOSGWindow */
-struct MFUnrecTBWIN32WindowPtr :
-    public PointerMField<TBWIN32Window *,
+struct MFUnrecTBWIN32WindowHelperPtr :
+    public PointerMField<TBWIN32WindowHelper *,
                          UnrecordedRefCountPolicy> {};
 /*! \ingroup GrpWindowWIN32FieldMFields \ingroup GrpLibOSGWindow */
-struct MFWeakTBWIN32WindowPtr :
-    public PointerMField<TBWIN32Window *,
+struct MFWeakTBWIN32WindowHelperPtr :
+    public PointerMField<TBWIN32WindowHelper *,
                          WeakRefCountPolicy      > {};
 /*! \ingroup GrpWindowWIN32FieldMFields \ingroup GrpLibOSGWindow */
-struct MFUncountedTBWIN32WindowPtr :
-    public PointerMField<TBWIN32Window *,
+struct MFUncountedTBWIN32WindowHelperPtr :
+    public PointerMField<TBWIN32WindowHelper *,
                          NoRefCountPolicy        > {};
 
 
@@ -218,4 +218,4 @@ struct MFUncountedTBWIN32WindowPtr :
 
 OSG_END_NAMESPACE
 
-#endif /* _OSGTBWIN32WINDOWFIELDS_H_ */
+#endif /* _OSGTBWIN32WINDOWHELPERFIELDS_H_ */

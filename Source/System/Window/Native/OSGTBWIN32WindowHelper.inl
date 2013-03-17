@@ -2,11 +2,9 @@
  *                                OpenSG                                     *
  *                                                                           *
  *                                                                           *
- *             Copyright (C) 2000-2002 by the OpenSG Forum                   *
+ *               Copyright (C) 2000-2013 by the OpenSG Forum                 *
  *                                                                           *
- *                            www.opensg.org                                 *
- *                                                                           *
- *   Authors: David Kabala                                                   *
+ * contact: dirk@opensg.org, gerrit.voss@vossg.org, carsten_neumann@gmx.net  *
  *                                                                           *
 \*---------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------*\
@@ -26,54 +24,20 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.                 *
  *                                                                           *
 \*---------------------------------------------------------------------------*/
-#include "OSGWindowUtils.h"
+/*---------------------------------------------------------------------------*\
+ *                                Changes                                    *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+\*---------------------------------------------------------------------------*/
 
-#ifdef __APPLE__
-#include "OSGCarbonWindow.h"
-#endif
-
-#ifdef WIN32
-#include "OSGWIN32Window.h"
-#include "OSGTBWIN32Window.h"
-#include "OSGTBWIN32WindowHelper.h"
-#endif
-
-#ifdef __linux
-#include "OSGXWindow.h"
-#endif
-
-#include "OSGTBNativeWindow.h"
+//---------------------------------------------------------------------------
+//  Includes
+//---------------------------------------------------------------------------
 
 OSG_BEGIN_NAMESPACE
 
-WindowEventProducerTransitPtr createNativeWindow(void)
-{
-#if defined(__APPLE__)
-    return WindowEventProducerTransitPtr(CarbonWindow::create());
-#elif defined(WIN32)
-
-	TBWIN32WindowUnrecPtr win = TBWIN32Window::create();
-	TBWIN32WindowHelperUnrecPtr nwin = TBWIN32WindowHelper::create();
-	win->setActualWindow( nwin );
-
-	return WindowEventProducerTransitPtr( win );
-    //return WindowEventProducerTransitPtr(WIN32Window::create());
-#elif defined(__linux)
-    return WindowEventProducerTransitPtr(XWindow::create());
-#endif
-}
-
-FieldContainerType const *getNativeWindowType(void)
-{
-#if defined(__APPLE__)
-    return &CarbonWindow::getClassType();
-#elif defined(WIN32)
-    return &WIN32Window::getClassType();
-#elif defined(__linux)
-    return &XWindow::getClassType();
-#endif
-}
-
 OSG_END_NAMESPACE
-
-

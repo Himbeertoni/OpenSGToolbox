@@ -3,7 +3,7 @@
 <FieldContainer
     name="TBWIN32Window"
     parent="WindowEventProducer"
-    library="WindowWIN32"
+    library="Window"
     pointerfieldtypes="both"
     structure="concrete"
     systemcomponent="true"
@@ -12,13 +12,24 @@
     >
     The class for TBWIN32 windows.
     <Field
-        name="WIN32Window"
-        type="WIN32WindowPtr"
+        name="ActualWindow"
+        type="TBWIN32WindowHelperPtr"
         cardinality="single"
         visibility="external"
         defaultValue="NULL"
-		fieldHeader="OSGWIN32WindowFields.h"
+		fieldHeader="OSGTBWIN32WindowHelperFields.h"
         access="public"
+        >
+    </Field>
+    <Field
+        name="hwnd"
+        type="HWND"
+        cardinality="single"
+        visibility="internal"
+        defaultValue="0"
+        fieldHeader="OSGWIN32WindowDataFields.h"
+        access="public"
+        fieldFlags="FClusterLocal"
         >
     </Field>	
 </FieldContainer>

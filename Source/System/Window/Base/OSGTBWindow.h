@@ -62,6 +62,111 @@ class OSG_SYSTEM_DLLMAPPING TBWindow : public TBWindowBase
     typedef TBWindowBase Inherited;
     typedef TBWindow     Self;
 
+#if 1
+    virtual void openWindow(const Pnt2f& ScreenPosition,
+                       const Vec2f& Size,
+                       const std::string& WindowName) = 0;
+
+    virtual void closeWindow(void) = 0;
+    
+    virtual void mainLoop(void) = 0;
+
+    //Set the Window Position
+    virtual void setPosition(Pnt2f Pos) = 0;
+
+    //Set the Window Position
+    virtual Pnt2f getPosition(void) const = 0;
+
+    //Set the Window size
+    virtual void setSize(Vec2us Size) = 0;
+
+	virtual void setSize(UInt16 width,
+                                 UInt16 height) = 0;
+
+    //Get the Window size
+    virtual Vec2f getSize(void) const = 0;
+
+    //Focused
+    //Set the Window Focus
+    virtual void setFocused(bool Focused) = 0;
+
+    //Get the Window Focus
+    virtual bool getFocused(void) const = 0;
+
+    //Visible / Iconify / Normal
+    //Set the Window Visible
+    virtual void setVisible(bool Visible) = 0;
+
+    //Get the Window Visible
+    virtual bool getVisible(void) const = 0;
+
+    //Set the Window Iconify
+    virtual void setIconify(bool Iconify) = 0;
+
+    //Get the Window Iconify
+    virtual bool getIconify(void) const = 0;
+
+    //Fullscreen
+    virtual void setFullscreen(bool Fullscreen) = 0;
+
+    //Get the Window Fullscreen
+    virtual bool getFullscreen(void) const = 0;
+
+    //Set the text on the Title bar of the window
+    virtual void setTitle(const std::string& TitleText) = 0;
+
+    //Get the text of the Title bar of the window
+    virtual std::string getTitle(void) = 0;
+
+    //Set the window to allow or not allow Resizing
+    virtual void setResizable(bool IsResizable) = 0;
+
+    //Get whether or not the window allows resizing
+    virtual bool getResizable(void) = 0;
+
+    //Set the window to draw or not draw it's border
+    virtual void setDrawBorder(bool DrawBorder) = 0;
+
+    //Get wether or not the window is drawing a border
+    virtual bool getDrawBorder(void) = 0;
+
+    virtual void setShowCursor(bool showCursor) = 0;
+
+    virtual bool getShowCursor(void) const = 0;
+    
+    virtual void setAttachMouseToCursor(bool attach) = 0;
+    
+    virtual bool getAttachMouseToCursor(void) const = 0;
+
+    virtual Vec2f getDesktopSize(void) const = 0;
+
+    virtual std::vector<BoostPath> openFileDialog(const std::string& WindowTitle,
+        const std::vector<WindowEventProducer::FileDialogFilter>& Filters,
+        const BoostPath& InitialDir,
+        bool AllowMultiSelect) = 0;
+
+    virtual BoostPath saveFileDialog(const std::string& DialogTitle,
+                    const std::vector<WindowEventProducer::FileDialogFilter>& Filters,
+                    const std::string& InitialFile,
+                    const BoostPath& InitialDirectory,
+                    bool PromptForOverwrite
+                    ) = 0;
+
+
+    virtual void draw(void) = 0;
+    virtual void update(void) = 0;
+
+    virtual bool attachWindow(void) = 0;
+
+    virtual UInt32 getKeyModifiers(void) const = 0;
+    virtual KeyEventDetails::KeyState getKeyState(KeyEventDetails::Key TheKey) const = 0;
+    
+    virtual Pnt2f getMousePosition(void) const = 0;
+
+    virtual std::string getClipboard(void) const = 0;
+
+    virtual void putClipboard(const std::string& Value) = 0;
+#else
     virtual void openWindow(const Pnt2f& ScreenPosition,
                        const Vec2f& Size,
                        const std::string& WindowName);
@@ -165,7 +270,7 @@ class OSG_SYSTEM_DLLMAPPING TBWindow : public TBWindowBase
     virtual std::string getClipboard(void) const;
 
     virtual void putClipboard(const std::string& Value);
-
+#endif
     /*---------------------------------------------------------------------*/
     /*! \name                      Sync                                    */
     /*! \{                                                                 */
