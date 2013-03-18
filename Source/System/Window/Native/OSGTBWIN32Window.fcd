@@ -10,15 +10,15 @@
     parentsystemcomponent="true"
     docGroupBase="GrpWindowWIN32"
     >
-    The class for TBWIN32 windows.
     <Field
         name="ActualWindow"
         type="TBWIN32WindowHelperPtr"
         cardinality="single"
-        visibility="external"
+        visibility="internal"
         defaultValue="NULL"
 		fieldHeader="OSGTBWIN32WindowHelperFields.h"
         access="public"
+		fieldFlags="FClusterLocal"
         >
     </Field>
     <Field
